@@ -31,6 +31,7 @@ createApp({
         },
       ],
       activeIndex: 0,
+      autoplay: "",
     };
   },
 
@@ -53,5 +54,19 @@ createApp({
     goToSlide(tumbIndex) {
       this.activeIndex = tumbIndex;
     },
+
+    setAutoplay() {
+      this.autoplay = setInterval(() => {
+        this.nextSlide();
+      }, 3000);
+    },
+
+    stopAutoplay() {
+      clearInterval(this.autoplay);
+    },
+  },
+
+  mounted() {
+    setAutoplay();
   },
 }).mount("#app");
